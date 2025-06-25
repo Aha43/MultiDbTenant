@@ -1,4 +1,4 @@
-namespace MultiDbTenant.BusinessLayer.Data;
+namespace MultiDbTenant.BusinessLayer.Data.Multitenant;
 
 public interface ITenantProvider
 {

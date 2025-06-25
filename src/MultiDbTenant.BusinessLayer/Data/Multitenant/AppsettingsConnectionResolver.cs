@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Configuration;
 
-namespace MultiDbTenant.BusinessLayer.Data;
+namespace MultiDbTenant.BusinessLayer.Data.Multitenant;
 
-public class TenantConnectionResolver(IConfiguration config)
+public class AppsettingsConnectionResolver(IConfiguration config) : IConnectionResolver
 {
     public string GetConnectionString(string tenantId)
     {

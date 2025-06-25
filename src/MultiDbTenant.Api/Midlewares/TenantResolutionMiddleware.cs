@@ -1,4 +1,4 @@
-using MultiDbTenant.BusinessLayer.Data;
+using MultiDbTenant.BusinessLayer.Data.Multitenant;
 
 namespace MultiDbTenant.Api.Midlewares;
 

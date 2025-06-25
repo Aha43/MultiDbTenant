@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MultiDbTenant.BusinessLayer.Abstraction;
 using MultiDbTenant.BusinessLayer.Data;
+using MultiDbTenant.BusinessLayer.Data.Multitenant;
 using MultiDbTenant.BusinessLayer.Repository;
 using MultiDbTenant.BusinessLayer.Service;
 
@@ -23,13 +24,13 @@ public static class Services
         services.AddScoped<ITenantProvider, TenantProvider>();
 
         // Register the tenant connection resolver
-        services.AddScoped<TenantConnectionResolver>();
+        services.AddScoped<IConnectionResolver, AppsettingsConnectionResolver>();
 
         // Register the DbContext with a factory to resolve the connection string based on the tenant
         services.AddDbContext<TenantDbContext>((serviceProvider, options) =>
         {
             var tenantProvider = serviceProvider.GetRequiredService<ITenantProvider>();
-            var connectionResolver = serviceProvider.GetRequiredService<TenantConnectionResolver>();
+            var connectionResolver = serviceProvider.GetRequiredService<IConnectionResolver>();
             var connectionString = connectionResolver.GetConnectionString(tenantProvider.TenantId);
             options.UseSqlServer(connectionString);
         });
