@@ -27,6 +27,21 @@ setup-db:
 # Rebuild everything and set up DB
 rebuild: clean build setup-db
 
+# Call the API for each tenant (POST sample product)
+call-api:
+	@echo "Posting sample to tenant1..."
+	curl -X POST http://localhost:5097/api/product \
+		-H "Content-Type: application/json" \
+		-H "X-Tenant-ID: tenant1" \
+		-d "{\"name\": \"Tenant1 Widget\", \"description\": \"From curl\"}"
+	@echo
+	@echo "Posting sample to tenant2..."
+	curl -X POST http://localhost:5097/api/product \
+		-H "Content-Type: application/json" \
+		-H "X-Tenant-ID: tenant2" \
+		-d "{\"name\": \"Tenant2 Widget\", \"description\": \"From curl\"}"
+	@echo
+
 # Help
 help:
 	@echo "Available targets:"
@@ -37,3 +52,4 @@ help:
 	@echo "  restore     - Restore NuGet packages"
 	@echo "  setup-db    - Run setup.sql to reset tenant databases"
 	@echo "  rebuild     - Clean, build, and setup DB"
+	@echo "  call-api    - Call the API for each tenant"

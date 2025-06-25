@@ -42,7 +42,7 @@ public class ProductController(
             return BadRequest("Product cannot be null");
         }
         await productService.AddProductAsync(product);
-        return CreatedAtAction(nameof(GetProductByIdAsync), new { id = product.Id }, product);
+        return Ok();
     }
 
     [HttpPut]

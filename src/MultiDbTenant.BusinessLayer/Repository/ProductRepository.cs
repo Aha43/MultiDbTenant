@@ -7,37 +7,35 @@ namespace MultiDbTenant.BusinessLayer.Repository;
 
 public class ProductRepository(TenantDbContext context) : IProductRepository
 {
-    private readonly TenantDbContext _context = context;
-
     public async Task<Product?> GetProductByIdAsync(int id)
     {
-        return await _context.Products.FindAsync(id);
+        return await context.Products.FindAsync(id);
     }
 
     public async Task<IEnumerable<Product>> GetAllProductsAsync()
     {
-        return await _context.Products.ToListAsync();
+        return await context.Products.ToListAsync();
     }
 
     public async Task AddProductAsync(Product product)
     {
-        await _context.Products.AddAsync(product);
-        await _context.SaveChangesAsync();
+        await context.Products.AddAsync(product);
+        await context.SaveChangesAsync();
     }
 
     public async Task UpdateProductAsync(Product product)
     {
-        _context.Products.Update(product);
-        await _context.SaveChangesAsync();
+        context.Products.Update(product);
+        await context.SaveChangesAsync();
     }
 
     public async Task DeleteProductAsync(int id)
     {
-        var product = await _context.Products.FindAsync(id);
+        var product = await context.Products.FindAsync(id);
         if (product != null)
         {
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            context.Products.Remove(product);
+            await context.SaveChangesAsync();
         }
     }
     
