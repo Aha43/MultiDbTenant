@@ -1,6 +1,6 @@
 using MultiDbTenant.BusinessLayer.Data;
 
-namespace MultiDbTenant.Api.Midleware;
+namespace MultiDbTenant.Api.Midlewares;
 
 public class TenantResolutionMiddleware(RequestDelegate next)
 {

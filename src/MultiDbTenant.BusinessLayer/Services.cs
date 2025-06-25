@@ -1,11 +1,23 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MultiDbTenant.BusinessLayer.Abstraction;
 using MultiDbTenant.BusinessLayer.Data;
+using MultiDbTenant.BusinessLayer.Repository;
+using MultiDbTenant.BusinessLayer.Service;
 
 namespace MultiDbTenant.BusinessLayer;
 
 public static class Services
 {
-    public static IServiceCollection AddMultiDbTenantServices(this IServiceCollection services)
+    public static IServiceCollection AddMultiDbTenantBusinessLayer(this IServiceCollection services)
+    {
+        return services
+            .AddDbContext() // Register the DbContext with tenant support
+            .AddRepositories() // Register repositories
+            .AddServices(); // Register services
+    }
+    
+    public static IServiceCollection AddDbContext(this IServiceCollection services)
     {
         // Register the tenant provider
         services.AddScoped<ITenantProvider, TenantProvider>();
@@ -23,6 +35,16 @@ public static class Services
         });
 
         return services;
+    }
+
+    private static IServiceCollection AddRepositories(this IServiceCollection services)
+    {
+        return services.AddScoped<IProductRepository, ProductRepository>();
+    }
+
+    private static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        return services.AddScoped<IProductService, ProductService>();
     }
 
 }
