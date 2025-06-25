@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiDbTenant.BusinessLayer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiDbTenant.Api", "src\MultiDbTenant.Api\MultiDbTenant.Api.csproj", "{A6FB6D82-5D28-4335-8058-91673DD3858C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiDbTenant.ScheduledJobRunner", "src\MultiDbTenant.ScheduledJobRunner\MultiDbTenant.ScheduledJobRunner.csproj", "{64F77267-CFAF-48D2-AFDA-9B8650535411}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +28,14 @@ Global
 		{A6FB6D82-5D28-4335-8058-91673DD3858C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6FB6D82-5D28-4335-8058-91673DD3858C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6FB6D82-5D28-4335-8058-91673DD3858C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F77267-CFAF-48D2-AFDA-9B8650535411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F77267-CFAF-48D2-AFDA-9B8650535411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F77267-CFAF-48D2-AFDA-9B8650535411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F77267-CFAF-48D2-AFDA-9B8650535411}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{72A6CB2D-479C-4F6A-8272-EA388E0D5485} = {9159830A-1977-4602-B126-DE43B1BAC2DF}
 		{A6FB6D82-5D28-4335-8058-91673DD3858C} = {9159830A-1977-4602-B126-DE43B1BAC2DF}
+		{64F77267-CFAF-48D2-AFDA-9B8650535411} = {9159830A-1977-4602-B126-DE43B1BAC2DF}
 	EndGlobalSection
 EndGlobal
